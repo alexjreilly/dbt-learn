@@ -11,6 +11,9 @@ sources:
         columns:
           - name: id
             description: "Primary key of the table, generated identity column."
+            tests:
+              - unique
+              - not_null
           - name: orderid
             description: "ID for each online order."
           - name: payment_method
@@ -20,3 +23,34 @@ sources:
           - name: created
             description: "Date when the record was created."
           - name: _batched_at
+
+  - name: jaffle_shop
+    database: raw
+    description: "Schema with raw data for jaffle shop."
+    tables:
+
+      - name: customers
+        columns:
+          - name: id
+            description: "Primary key of the table, generated identity column."
+            tests:
+              - unique
+              - not_null
+          - name: first_name
+            description: "First name of the customer."
+          - name: last_name
+            description: "Last name of the customer."
+
+      - name: orders
+        columns:
+          - name: id
+            description: "Primary key of the table, generated identity column."
+            tests:
+              - unique
+              - not_null
+          - name: user_id
+            description: "ID of the user placing the order."
+          - name: order_date
+            description: "Date when the order was placed."
+          - name: status
+            description: "Status of the order."

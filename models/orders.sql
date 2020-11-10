@@ -6,10 +6,13 @@ WITH customer_payments AS (
         stg_orders.customer_id,
         stg_payments.amount
 
-    FROM {{ ref('stg_orders') }} stg_orders
+    FROM {{ ref('stg_orders') }} AS stg_orders
 
-    LEFT JOIN {{ ref('stg_payments') }} stg_payments
+    LEFT JOIN {{ ref('stg_payments') }} AS stg_payments
         ON stg_orders.order_id = stg_payments.order_id
+
+    WHERE stg_payments.status = 'success'
+
 )
 
 

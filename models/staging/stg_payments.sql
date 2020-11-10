@@ -6,7 +6,11 @@
 
 
 SELECT
+    id,
     orderid AS order_id,
-    amount
+    paymentmethod AS payment_method,
+    status,
+    amount/100 AS amount,
+    created
 
 FROM {{ source('stripe', 'payment') }}
