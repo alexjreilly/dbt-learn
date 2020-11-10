@@ -1,0 +1,22 @@
+
+version: 2
+
+sources:
+  - name: stripe
+    database: raw
+    description: "Schema with raw data from stripe."
+    tables:
+
+      - name: payment
+        columns:
+          - name: id
+            description: "Primary key of the table, generated identity column."
+          - name: orderid
+            description: "ID for each online order."
+          - name: payment_method
+          - name: status
+            description: "The status of the order."
+          - name: amount
+          - name: created
+            description: "Date when the record was created."
+          - name: _batched_at
